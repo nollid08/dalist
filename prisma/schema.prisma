@@ -19,3 +19,17 @@ model GroceryItem {
   timeEdited DateTime @default(now())
   isBought   Boolean  @default(false)
 }
+
+model User {
+  id             String    @id
+  sessions       Session[]
+  username       String    @unique
+  hashedPassword String
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+}

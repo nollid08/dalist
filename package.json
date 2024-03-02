@@ -26,6 +26,7 @@
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
+		"lucia": "^3.0.1",
 		"postcss": "^8.4.35",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
@@ -39,7 +40,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@lucia-auth/adapter-prisma": "^4.0.0",
 		"@prisma/client": "^5.10.2",
-		"dotenv": "^16.4.5"
+		"dotenv": "^16.4.5",
+		"oslo": "^1.1.3"
 	}
 }
