@@ -1,7 +1,9 @@
-import { addGroceryItem, deleteGroceryItem, getGroceryItems, toggleGroceryItem } from '$lib/db';
+import { addGroceryItem, deleteGroceryItem, getGroceryItems, toggleGroceryItem } from '$lib/server/grocery_items';
 import type { GroceryItem } from '@prisma/client';
 import type { Actions, PageServerLoad } from './$types';
-export const load = (async () => {
+import { redirect } from '@sveltejs/kit';
+export const load = (async (event) => {
+    if (!event.locals.user) redirect(302, "/login/");
     const items: GroceryItem[] = await getGroceryItems();
     return { items };
 }) satisfies PageServerLoad;

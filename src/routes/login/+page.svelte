@@ -4,7 +4,7 @@
 
 <div class="h-screen flex justify-center items-center">
 	<div class="w-full max-w-md h-max prose">
-		<h1 class="text-center">Sign up</h1>
+		<h1 class="text-center">Login</h1>
 		<form method="POST" class="form-control w-full max-w-md">
 			<label for="username">Username</label>
 			<input
@@ -24,9 +24,9 @@
 			/><br />
 			<button type="submit" class="btn btn-active btn-secondary btn-wide mx-auto">Continue</button>
 		</form>
+		<div class="divider divider-accent"></div>
 		<div class="w-full text-center">
-			<div class="divider divider-accent"></div>
-			<span class="text-center">Already have an account? <a href="/login">Login</a></span>
+			<span>Don't have an account? <a href="/signup">Sign Up!</a></span>
 		</div>
 	</div>
 </div>

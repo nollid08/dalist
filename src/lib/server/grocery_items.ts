@@ -1,6 +1,6 @@
-import { PrismaClient, type GroceryItem } from "@prisma/client";
+import { type GroceryItem } from "@prisma/client";
+import { dbClient } from "$lib/server/db";
 
-const dbClient = new PrismaClient();
 
 export async function getGroceryItems(): Promise<GroceryItem[]> {
     const groceryItems: GroceryItem[] = await dbClient.groceryItem.findMany();
