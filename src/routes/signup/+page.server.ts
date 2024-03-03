@@ -33,6 +33,18 @@ export const actions: Actions = {
         const hashedPassword = await new Argon2id().hash(password);
 
         // TODO: check if username is already used
+        const existingUser = await dbClient.user.findUnique({
+            where: {
+                username: username
+            }
+        });
+
+        if (existingUser) {
+            return fail(400, {
+                message: "Incorrect username or password"
+            });
+        }
+
         await dbClient.user.create({
             data: {
                 id: userId,
