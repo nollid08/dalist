@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import type { GroceryItem } from '@prisma/client';
+	import { createEventDispatcher } from 'svelte';
 
 	export let groceryItem: GroceryItem;
 	let completedForm: HTMLFormElement;
+	const dispatch = createEventDispatcher();
 </script>
 
 <div class="text-left flex justify-between p-3 bg-black bg-opacity-20 rounded-lg m-5 align-middle">
@@ -23,7 +25,15 @@
 		/>
 	</form>
 	<p class="text-slate-100 opacity-1">{groceryItem.name}</p>
-	<form action="?/deleteItem" class="my-auto" name="id" method="post" use:enhance>
+	<form
+		action="?/deleteItem"
+		class="my-auto"
+		name="id"
+		method="post"
+		use:enhance={() => {
+			dispatch('delete');
+		}}
+	>
 		<input type="hidden" name="id" value={groceryItem.id} />
 		<button class="btn btn-circle btn-outline">
 			<svg
